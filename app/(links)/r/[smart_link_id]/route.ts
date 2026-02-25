@@ -25,9 +25,9 @@ const supabase = createClient(
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { smart_link_id: string } }
+  { params }: { params: Promise<{ smart_link_id: string }> }
 ) {
-  const { smart_link_id } = params
+  const { smart_link_id } = await params
   const { searchParams } = new URL(request.url)
 
   // Look up the smart link
